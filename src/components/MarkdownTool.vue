@@ -28,7 +28,10 @@
 
         <n-grid-item span="24 s:24 m:12">
           <n-card size="small" title="预览结果" embedded>
-            <div class="markdown-preview" v-html="compiledMarkdown"></div>
+            <div
+              :class="['markdown-preview', { 'markdown-preview-dark': isDark }]"
+              v-html="compiledMarkdown"
+            ></div>
           </n-card>
         </n-grid-item>
       </n-grid>
@@ -155,6 +158,12 @@ function renderMarkdown(source) {
 }
 
 export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false
+    }
+  },
   setup() {
     const markdownText = ref(SAMPLE_TEXT);
     const statusText = ref("实时预览中");
@@ -258,47 +267,47 @@ export default {
   border-left: 4px solid #0f766e;
 }
 
-:global(.dark) .markdown-preview {
-  color: #e2e8f0;
+.markdown-preview-dark {
+  color: #f3f8ff;
 }
 
-:global(.dark) .markdown-preview :deep(h1),
-:global(.dark) .markdown-preview :deep(h2),
-:global(.dark) .markdown-preview :deep(h3) {
-  color: #f8fafc;
+.markdown-preview-dark :deep(h1),
+.markdown-preview-dark :deep(h2),
+.markdown-preview-dark :deep(h3) {
+  color: #ffffff;
   letter-spacing: 0;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
-:global(.dark) .markdown-preview :deep(p),
-:global(.dark) .markdown-preview :deep(li),
-:global(.dark) .markdown-preview :deep(blockquote) {
-  color: #dbe4f0;
+.markdown-preview-dark :deep(p),
+.markdown-preview-dark :deep(li),
+.markdown-preview-dark :deep(blockquote) {
+  color: #eef4ff;
 }
 
-:global(.dark) .markdown-preview :deep(ul) {
-  color: #dbe4f0;
+.markdown-preview-dark :deep(ul) {
+  color: #eef4ff;
 }
 
-:global(.dark) .markdown-preview :deep(code) {
+.markdown-preview-dark :deep(code) {
   background: rgba(30, 41, 59, 0.98);
   color: #f8fafc;
 }
 
-:global(.dark) .markdown-preview :deep(pre) {
+.markdown-preview-dark :deep(pre) {
   border: 1px solid rgba(71, 85, 105, 0.6);
   background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.92));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
-:global(.dark) .markdown-preview :deep(blockquote) {
+.markdown-preview-dark :deep(blockquote) {
   border-left-color: #2dd4bf;
   background: rgba(13, 20, 34, 0.55);
   padding: 8px 0 8px 12px;
   border-radius: 0 8px 8px 0;
 }
 
-:global(.dark) .markdown-preview :deep(strong) {
+.markdown-preview-dark :deep(strong) {
   color: #ffffff;
 }
 </style>
