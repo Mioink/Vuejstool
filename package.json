@@ -1,0 +1,9 @@
+{
+  "name": "tool-platform",
+  "private": true,
+  "version": "1.0.0",
+  "description": "基于 Vue.js 的在线多功能工具平台",
+  "scripts": {
+    "serve": "python -m http.server 4173"
+  }
+}
