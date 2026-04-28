@@ -63,6 +63,7 @@ export default {
     const statusType = ref("default");
 
     const strength = computed(() => {
+      // 用轻量规则计算强度，避免为了提示等级再引入额外库。
       const score =
         (useUppercase.value ? 1 : 0) +
         (useLowercase.value ? 1 : 0) +
@@ -76,6 +77,7 @@ export default {
     });
 
     function generatePassword() {
+      // 根据勾选项先拼出字符池，再从字符池中随机取值生成密码。
       let chars = "";
       if (useUppercase.value) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       if (useLowercase.value) chars += "abcdefghijklmnopqrstuvwxyz";

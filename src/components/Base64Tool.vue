@@ -49,10 +49,12 @@ export default {
     const statusType = ref("default");
 
     function utf8ToBase64(value) {
+      // 先把 UTF-8 文本安全转换，再交给只支持 Latin-1 的 btoa 处理。
       return btoa(unescape(encodeURIComponent(value)));
     }
 
     function base64ToUtf8(value) {
+      // 反向还原 UTF-8 转换，保证中文等多字节字符能正确解码。
       return decodeURIComponent(escape(atob(value)));
     }
 

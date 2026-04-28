@@ -34,6 +34,8 @@ export default {
     const saveStatus = ref("未修改");
     let saveTimer = null;
 
+    // 把笔记内容存到 localStorage，刷新页面后也能自动恢复。
+
     function persistNote() {
       localStorage.setItem(STORAGE_KEY, noteText.value);
       saveStatus.value = "已自动保存";
@@ -57,6 +59,7 @@ export default {
       persistNote();
     }
 
+    // 给自动保存加一点延迟，避免输入过快时频繁写入 localStorage。
     watch(noteText, () => {
       saveStatus.value = "正在输入...";
       window.clearTimeout(saveTimer);

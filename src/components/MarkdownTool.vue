@@ -77,6 +77,7 @@ function applyInlineMarkdown(text) {
 }
 
 function renderMarkdown(source) {
+  // 按行解析 Markdown，方便在不引入额外依赖的情况下继续扩展规则。
   const lines = source.replace(/\r\n/g, "\n").split("\n");
   const blocks = [];
   let inCodeBlock = false;
@@ -120,6 +121,7 @@ function renderMarkdown(source) {
     }
 
     if (/^- /.test(line)) {
+      // 列表项先暂存，等当前列表块结束后再统一输出成一个 ul。
       listItems.push(line.replace(/^- /, ""));
       continue;
     }

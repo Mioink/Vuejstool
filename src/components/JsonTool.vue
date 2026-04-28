@@ -52,6 +52,7 @@ export default {
     });
 
     function parseInput() {
+      // 统一在这里做 JSON 解析，格式化和压缩都复用同一套校验逻辑。
       try {
         return JSON.parse(input.value);
       } catch (error) {
@@ -63,6 +64,7 @@ export default {
     }
 
     function formatJson() {
+      // 使用两个空格缩进，让结果更适合阅读和调试。
       const parsed = parseInput();
       if (!parsed) return;
       output.value = JSON.stringify(parsed, null, 2);
@@ -71,6 +73,7 @@ export default {
     }
 
     function compressJson() {
+      // 去掉缩进重新序列化，生成更紧凑的 JSON 内容。
       const parsed = parseInput();
       if (!parsed) return;
       output.value = JSON.stringify(parsed);

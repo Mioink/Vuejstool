@@ -131,6 +131,7 @@ export default {
     NoteTool
   },
   setup() {
+    // 所有工具都集中登记在这里，左侧导航和右侧动态组件共用这份配置。
     const tools = [
       {
         key: "json",
@@ -217,6 +218,7 @@ export default {
     }
 
     function recordRecent(key) {
+      // 把最近使用的工具放到最前面，并把记录数量限制在 5 条以内。
       const next = [key, ...recentKeys.value.filter((item) => item !== key)].slice(0, 5);
       recentKeys.value = next;
     }
@@ -235,6 +237,7 @@ export default {
     }
 
     onMounted(() => {
+      // 页面刷新后恢复上一次的界面状态，保持连续使用体验。
       isDark.value = safeRead(STORAGE_KEYS.theme, false);
       favorites.value = safeRead(STORAGE_KEYS.favorites, []);
       recentKeys.value = safeRead(STORAGE_KEYS.recent, []);
