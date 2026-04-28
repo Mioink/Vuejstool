@@ -81,6 +81,7 @@
 
           <main class="content-panel">
             <div class="content-wrap">
+              <dashboard-hero :is-dark="isDark" />
               <n-card class="hero-panel" :bordered="false">
                 <div class="hero-copy">
                   <div>
@@ -111,6 +112,7 @@ import Base64Tool from "./components/Base64Tool.vue";
 import MarkdownTool from "./components/MarkdownTool.vue";
 import PasswordTool from "./components/PasswordTool.vue";
 import NoteTool from "./components/NoteTool.vue";
+import DashboardHero from "./components/DashboardHero.vue";
 
 const { computed, onMounted, ref, watch } = Vue;
 const { darkTheme } = naive;
@@ -128,7 +130,8 @@ export default {
     Base64Tool,
     MarkdownTool,
     PasswordTool,
-    NoteTool
+    NoteTool,
+    DashboardHero
   },
   setup() {
     // 所有工具都集中登记在这里，左侧导航和右侧动态组件共用这份配置。
