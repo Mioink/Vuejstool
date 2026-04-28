@@ -8,7 +8,6 @@
               <h1>在线多功能工具平台</h1>
               <p>基于 Vue.js 的工具集合设计与实现</p>
             </div>
-            <n-tag round size="small" type="success">毕业设计演示版</n-tag>
           </div>
 
           <n-space align="center" :size="16">
