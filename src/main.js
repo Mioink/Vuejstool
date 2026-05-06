@@ -7,7 +7,7 @@ const options = {
     vue: Vue
   },
   async getFile(url) {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`无法加载文件: ${url}`);
     }

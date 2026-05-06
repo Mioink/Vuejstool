@@ -152,7 +152,7 @@ export default {
       {
         key: "markdown",
         name: "Markdown 预览",
-        description: "左侧输入 Markdown，右侧实时预览。",
+        description: "上方输入 Markdown，下方实时预览。",
         category: "文档工具",
         component: MarkdownTool
       },
